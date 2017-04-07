@@ -37,7 +37,7 @@ class ConcreteMatMul(ConcreteSpecializedFunction):
         self._c_function(C, A, B, ct.byref(duration))
         self.lsf.report(time=duration.value)
         flops = 2 * a.shape[0] * a.shape[1] * b.shape[1]
-        print("GFLOPS: {}".format(flops * 1e-9 / duration.value))
+        print(("GFLOPS: {}".format(flops * 1e-9 / duration.value)))
         return C
 
 

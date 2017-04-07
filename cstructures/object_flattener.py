@@ -25,4 +25,4 @@ def flatten_object(obj):
         return arr		# do we want this to be an Array object, or a np object?
     else:
         # TODO: find a way to do this anyways...
-        print "Exception: method cstruct_flatten() not defined"
+        print("Exception: method cstruct_flatten() not defined")

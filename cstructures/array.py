@@ -136,7 +136,7 @@ class Backend(ast.NodeTransformer):
 
     def gen_loop_index(self, loopvars, shape):
         curr = C.SymbolRef(loopvars[-1])
-        for i in reversed(range(len(loopvars) - 1)):
+        for i in reversed(list(range(len(loopvars) - 1))):
             curr = C.Add(
                 C.Mul(C.SymbolRef(loopvars[i]),
                       C.Constant(np.prod(shape[i + 1:]))),
@@ -535,7 +535,7 @@ class Array(np.ndarray):
         Allows for specializer writes to declare tuning parameters on the
         generated loop.  These arguments are ignored for python
         """
-        return itertools.product(range(d) for d in self.shape)
+        return itertools.product(list(range(d)) for d in self.shape)
 
     @staticmethod
     def empty(*args, **kwargs):

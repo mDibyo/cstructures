@@ -47,7 +47,7 @@ def dgemmify(func):
 
     mod_tree = fix_missing_locations(mod_tree)
 
-    print(dump(mod_tree))
+    print((dump(mod_tree)))
     # compile the function and add it to current local namespace
     new_func_code = compile(
         mod_tree, filename=inspect.getsourcefile(func), mode='exec')
@@ -267,7 +267,7 @@ class TranspositionFinder(NodeTransformer):
             target, value = queue.popleft()
             if isinstance(target, list):
                 #  target hasn't been completely unrolled yet
-                for sub_target, sub_value in izip_longest(
+                for sub_target, sub_value in zip_longest(
                         target, value.elts, fillvalue=sentinel):
                     if sub_target is sentinel or \
                             sub_value is sentinel:
